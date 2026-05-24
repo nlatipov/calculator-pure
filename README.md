@@ -1,59 +1,40 @@
-# Калькулятор
+# Calculator - Clean Architecture Demo
 
-<!-- Бейджи статуса CI/CD -->
-<!-- Замените <username> и <repository> на ваши значения после публикации на GitHub -->
-<!--
-![CI](https://github.com/<username>/<repository>/workflows/CI/badge.svg)
-![Deploy](https://github.com/<username>/<repository>/workflows/Deploy%20to%20GitHub%20Pages/badge.svg)
-![CodeQL](https://github.com/<username>/<repository>/workflows/CodeQL%20Security%20Analysis/badge.svg)
--->
+A calculator built with **Clean Architecture** principles in TypeScript, demonstrating separation of concerns across layers.
 
-Это упрощенная версия калькулятора с чистой архитектурой.
+## Architecture
 
+```
+src/
+├── core/              # Business logic (pure, no dependencies)
+├── adapters/          # Interface adapters (connecting core to infrastructure)
+└── infrastructure/    # Delivery mechanisms (Web UI, CLI)
+```
 
-## Установка
+The same core logic powers two independent interfaces - a **web app** and a **CLI** - without any code duplication, proving that the architecture is truly decoupled.
+
+## Tech Stack
+
+- **TypeScript** — strict mode, no `any`
+- **Vite** — fast build and dev server
+- **Clean Architecture** — core → adapters → infrastructure
+- **CI/CD** — GitHub Actions (CI, deploy to GitHub Pages, CodeQL security analysis)
+
+## Getting Started
 
 ```bash
 npm install
-```
 
-## Запуск
-
-### Веб-версия
-```bash
+# Web version
 npm run web
-```
 
-### CLI-версия
-```bash
+# CLI version
 npm run cli
-```
 
-### Сборка
-```bash
+# Build
 npm run build
 ```
 
-## 🚀 CI/CD
+## Why This Project
 
-Проект настроен с GitHub Actions для автоматизации:
-
-- **CI** - автоматическая проверка кода при каждом push/PR
-- **Deploy** - автоматический деплой на GitHub Pages при push в main
-- **CodeQL** - анализ безопасности кода
-- **Dependency Review** - проверка зависимостей в PR
-- **Dependabot** - автоматические обновления зависимостей
-
-## 📦 Структура проекта
-
-```
-calculator-pure/
-├── src/
-│   ├── core/              # Бизнес-логика
-│   ├── adapters/          # Связующий слой
-│   └── infrastructure/    # Детали реализации
-├── .github/
-│   ├── workflows/         # GitHub Actions
-│   └── SETUP.md          # Инструкции по настройке CI/CD
-└── package.json
-```
+This is a deliberately simple app used to demonstrate architectural thinking — how to structure code so that business logic is portable, testable, and independent of frameworks or delivery mechanisms. The same pattern scales to complex applications.
